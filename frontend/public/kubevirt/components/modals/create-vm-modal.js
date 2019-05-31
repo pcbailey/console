@@ -13,6 +13,7 @@ import {
 } from '../../models';
 import { WithResources } from '../utils/withResources';
 import { units } from '../utils/okdutils';
+import { SecretModel } from '../../../models';
 
 export const openCreateVmWizard = ( activeNamespace, createTemplate = false ) => {
   const launcher = modalResourceLauncher(CreateVmWizard, {
@@ -40,6 +41,9 @@ export const openCreateVmWizard = ( activeNamespace, createTemplate = false ) =>
     },
     dataVolumes: {
       resource:  getResource(DataVolumeModel, {namespace: activeNamespace}),
+    },
+    vCenterSecrets: {
+      resource: getResource(SecretModel, {namespace: activeNamespace}),
     },
   },(({namespaces, userTemplates, commonTemplates}) => {
       let selectedNamespace;
