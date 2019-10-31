@@ -23,6 +23,13 @@ const buildConfig = (name, networkType, typeParamsData): NetworkAttachmentDefini
     config[key] = _.get(val, 'value', null);
   });
 
+  try {
+    config.ipam = JSON.parse(_.get(typeParamsData, 'ipam.value', {}));
+  } catch (e) {
+    console.log(e); // eslint-disable-line no-console
+    config.ipam = {};
+  }
+
   return config;
 };
 
