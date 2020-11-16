@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import {
   Alert,
@@ -15,16 +16,19 @@ type ModalErrorMessageProps = {
   message: string;
 };
 
-export const ModalErrorMessage: React.FC<ModalErrorMessageProps> = ({ message }) => (
-  <Alert
-    isInline
-    className="co-alert co-alert--scrollable"
-    variant="danger"
-    title="An error occurred"
-  >
-    <div className="co-pre-line">{message}</div>
-  </Alert>
-);
+export const ModalErrorMessage: React.FC<ModalErrorMessageProps> = ({ message }) => {
+  const { t } = useTranslation();
+  return (
+    <Alert
+      isInline
+      className="co-alert co-alert--scrollable"
+      variant="danger"
+      title={t('kubevirt-plugin~An error occurred')}
+    >
+      <div className="co-pre-line">{message}</div>
+    </Alert>
+  );
+};
 
 type ModalSimpleMessageProps = {
   message: string;
@@ -88,7 +92,6 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   React.useEffect(() => {
     setTimeout(() => setShowSpinner(true), 300);
   }, []);
-
   return (
     <footer
       className={classNames('co-m-btn-bar modal-footer kubevirt-modal-footer__buttons', className)}
