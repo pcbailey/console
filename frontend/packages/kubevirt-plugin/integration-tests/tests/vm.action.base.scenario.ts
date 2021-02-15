@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { browser, ExpectedConditions as until } from 'protractor';
 import { testName } from '@console/internal-integration-tests/protractor.conf';
 import {
@@ -138,11 +139,14 @@ describe('Test VM actions', () => {
       'ID(CNV-4019) Unpauses VM via modal dialog',
       async () => {
         await vm.waitForStatus(VM_STATUS.Running);
+        console.log('********** Wait for running');
         pauseVM(vmName, testName);
         await vm.waitForStatus(VM_STATUS.Paused);
+        console.log('********** Wait for paused');
         await vm.modalEditStatus();
         await click(unpauseButton);
         await vm.waitForStatus(VM_STATUS.Running);
+        console.log('********** Wait for status');
       },
       VM_ACTIONS_TIMEOUT_SECS,
     );
