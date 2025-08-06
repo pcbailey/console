@@ -15,6 +15,15 @@ import {
   TaintEffect,
 } from '@console/dynamic-plugin-sdk/src/extensions/console-types';
 import { EventInvolvedObject } from './event';
+<<<<<<< HEAD
+=======
+import {
+  Selector,
+  MatchLabels,
+  K8sModel,
+  K8sVerb,
+} from '@console/dynamic-plugin-sdk/src/api/common-types';
+>>>>>>> ec5c40235c (Backport 14907 to 4.18)
 
 export * from '@console/dynamic-plugin-sdk/src/extensions/console-types';
 export * from '@console/dynamic-plugin-sdk/src/api/common-types';
